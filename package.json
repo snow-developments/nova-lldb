@@ -5,7 +5,8 @@
   "description": "LLVM debugger integration for Nova.",
   "main": "index.js",
   "scripts": {
-    "test": "false"
+    "test": "false",
+    "prepublishOnly": "nova extension publish lldb.novaextension"
   },
   "repository": {
     "type": "git",
