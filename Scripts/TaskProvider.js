@@ -49,4 +49,8 @@ class LldbDebugAdapter {
   // See https://docs.nova.app/api-reference/debug-session
   /** @type DebugSession[] */
   sessions = [];
+
+  // See https://github.com/vadimcn/codelldb#languages
+  /** @type string */
+  syntax = null;
 }

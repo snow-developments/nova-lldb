@@ -14,6 +14,19 @@
   "activationEvents": [
     "onWorkspaceContains:extension.json"
   ],
+
+  "breakpoints": [
+    { "syntax": "ada" },
+    { "syntax": "c" },
+    { "syntax": "d" },
+    { "syntax": "fortran" },
+    { "syntax": "kotlin" },
+    { "syntax": "nim" },
+    { "syntax": "objective-c" },
+    { "syntax": "rust" },
+    { "syntax": "swift" },
+    { "syntax": "zig" }
+  ],
   "debugAdapters": {
     "lldb": {
       "name": "LLDB"
