@@ -1,14 +1,8 @@
 
 # LLDB for Nova
-<!--
-👋 Hello! As Nova users browse the extensions library, a good README can help them understand what your extension does, how it works, and what setup or configuration it may require.
 
-Not every extension will need every item described below. Use your best judgement when deciding which parts to keep to provide the best experience for your new users.
-
-💡 Quick Tip! As you edit this README template, you can preview your changes by selecting **Extensions → Activate Project as Extension**, opening the Extension Library, and selecting "LLDB" in the sidebar.
-
-Let's get started!
--->
+<!-- TODO: Link to this extension in the Nova extension library -->
+[![Nova Extension](https://img.shields.io/github/v/tag/snow-developments/nova-lldb?label=nova)]()
 
 **LLDB** provides integration with the [LLVM debugger](https://lldb.llvm.org), including tasks to run and debug programs, attaching the debugger to an existing process, and stepping through code.
 

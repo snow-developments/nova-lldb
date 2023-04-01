@@ -2,9 +2,12 @@
   "identifier": "llc.snow.lldb",
   "name": "LLDB",
   "organization": "Snow Developments",
-  "description": "Provides integration with the LLVM debugger.",
+  "description": "LLVM debugger integration for Nova.",
+  "license": "MIT",
   "version": "0.1",
   "categories": ["tasks"],
+  "homepage": "https://github.com/snow-developments/nova-lldb#readme",
+  "bugs": "https://github.com/snow-developments/nova-lldb/issues",
   
   "main": "main.js",
   
