@@ -18,25 +18,29 @@ class TaskProvider {
     if (context.action.type !== Task.Run) return null;
     // TODO: Are there things to cleanup on behalf of LLDB?
     // else if (context.action.type === Task.Clean)
+    // See https://docs.nova.app/api-reference/configuration/#getkey-coerce
     const config = context.config;
 
-    // https://en.wikipedia.org/wiki/Uniform_Type_Identifier
-
+    // See https://docs.nova.app/extensions/debug-adapters
     const action = new TaskDebugAdapterAction('lldb');
     // TODO: https://lldb.llvm.org/use/tutorial.html
     action.command = "/usr/bin/lldb";
-    // See https://docs.nova.app/api-reference/configuration/#getkey-coerce
-    if (config) {
-      action.args = config.get("lldb.args", "array") || [];
-      // TODO: Support https://docs.nova.app/api-reference/task-debug-adapter-action/#adapterstart
-      action.debugArgs = {
-        program: config.get("lldb.launchPath", "string"),
-        args: config.get("lldb.launchArgs", "array") || [],
-      };
-      action.debugRequest = config.get("lldb.request", "string") || "launch";
-    }
+    if (!config) return action;
+    action.args = config.get("lldb.args", "array") || [];
+    // TODO: Support https://docs.nova.app/api-reference/task-debug-adapter-action/#adapterstart
+    action.debugArgs = {
+      // See https://en.wikipedia.org/wiki/Uniform_Type_Identifier
+      program: config.get("lldb.launchPath", "string"),
+      args: config.get("lldb.launchArgs", "array") || [],
+    };
+    action.debugRequest = config.get("lldb.request", "string") || "launch";
 
     return action;
   }
 }
 exports.TaskProvider = TaskProvider;
+
+// https://docs.nova.app/extensions/debug-adapters
+class LldbDebugAdapter {
+  // TODO: https://github.com/vadimcn/codelldb/tree/master/adapter
+}

@@ -9,11 +9,6 @@ exports.deactivate = function() {
 }
 
 nova.assistants.registerTaskAssistant(new TaskProvider(), {
-  identifier: "lldb-tasks",
+  identifier: "lldb",
   name: "LLDB"
 });
-
-// https://docs.nova.app/extensions/debug-adapters
-class DebugProvider {
-  // TODO: https://github.com/vadimcn/codelldb/tree/master/adapter
-}
