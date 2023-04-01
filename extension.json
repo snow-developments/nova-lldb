@@ -1,0 +1,14 @@
+{
+  "identifier": "llc.snow.lldb",
+  "name": "LLDB",
+  "organization": "Snow Developments",
+  "description": "Provides integration with the LLVM debugger.",
+  "version": "0.1",
+  "categories": ["tasks"],
+  
+  "main": "main.js",
+  
+  "activationEvents": [
+    "onWorkspaceContains:extension.json"
+  ]
+}
