@@ -28,7 +28,8 @@
   ],
   "debugAdapters": {
     "lldb": {
-      "name": "LLDB"
+      "name": "LLDB",
+      "image": "llvm"
     }
   },
 
