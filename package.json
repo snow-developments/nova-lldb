@@ -1,0 +1,23 @@
+{
+  "name": "nova-lldb",
+  "private": true,
+  "version": "0.1.0",
+  "description": "LLVM debugger integration for Nova.",
+  "main": "index.js",
+  "scripts": {
+    "test": "false"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/snow-developments/nova-lldb.git"
+  },
+  "author": "Snow Developments",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/snow-developments/nova-lldb/issues"
+  },
+  "homepage": "https://github.com/snow-developments/nova-lldb#readme",
+  "devDependencies": {
+    "@types/nova-editor"
+  }
+}
