@@ -13,5 +13,63 @@
   
   "activationEvents": [
     "onWorkspaceContains:extension.json"
-  ]
+  ],
+  "taskTemplates": {
+    "lldb": {
+      "name": "LLDB",
+      "tasks": {
+        "run": {
+          "resolve": "lldb"
+        }
+      },
+      "config": [
+        {
+          "key": "request",
+          "title": "Launch Type",
+          "type": "enum",
+          "default": "launch",
+          "values": [
+            ["launch", "Launch"],
+            ["attach", "Attach"]
+          ],
+          "description": "When launching, a new instance of the program will be started by LLDB. When attaching, the debugger will attempt to connect to an already-running instance of the program."
+        },
+        {
+          "key": "launchPath",
+          "title": "Program",
+          "type": "path",
+          "filetype": ["app", "public.unix-executable"],
+          "description": "The program to launch which contains debugging symbols readable by LLDB."
+        },
+        {
+          "key": "launchArgs",
+          "title": "Launch Arguments",
+          "description": "Additional command-line arguments to pass to the program when launching.",
+          "type": "stringArray"
+        },
+        {
+          "key": "stopOnEntry",
+          "title": "Stop on Entry",
+          "description": "Whether to stop automatically after launch.",
+          "type": "boolean",
+          "default": false
+        },
+        {
+          "type": "section",
+          "title": "LLDB Configuration"
+        },
+        {
+          "key": "args",
+          "title": "LLDB Arguments",
+          "description": "Additional command-line arguments to pass to LLDB when launching.",
+          "type": "stringArray"
+        }
+      ]
+    }
+  },
+  "debugAdapters": {
+    "lldb": {
+      "name": "LLDB"
+    }
+  }
 }

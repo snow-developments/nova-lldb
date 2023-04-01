@@ -1,7 +1,7 @@
 const { TaskProvider } = require("./TaskProvider");
 
 exports.activate = function() {
-  // Do work when the extension is activated
+  console.log("activated");
 }
 
 exports.deactivate = function() {
@@ -9,10 +9,11 @@ exports.deactivate = function() {
 }
 
 nova.assistants.registerTaskAssistant(new TaskProvider(), {
-  identifier: "example-tasks",
-  name: "Examples"
+  identifier: "lldb-tasks",
+  name: "LLDB"
 });
 
+// https://docs.nova.app/extensions/debug-adapters
 class DebugProvider {
   // TODO: https://github.com/vadimcn/codelldb/tree/master/adapter
 }
