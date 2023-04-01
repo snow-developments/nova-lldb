@@ -9,6 +9,10 @@
   "repository": "https://github.com/snow-developments/nova-lldb",
   "bugs": "https://github.com/snow-developments/nova-lldb/issues",
 
+  "entitlements": {
+    "process": true
+  },
+
   "main": "main.js",
   "min_runtime": "9.0",
 

@@ -1,6 +1,5 @@
 # LLDB for Nova
 
-<!-- TODO: Link to this extension in the Nova extension library -->
 [![Nova Extension](https://img.shields.io/github/v/tag/snow-developments/nova-lldb?label=nova)](https://extensions.panic.com/extensions/llc.snow/llc.snow.lldb)
 
 ## Development
