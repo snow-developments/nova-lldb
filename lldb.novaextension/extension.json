@@ -10,6 +10,7 @@
   "bugs": "https://github.com/snow-developments/nova-lldb/issues",
 
   "main": "main.js",
+  "min_runtime": "9.0",
 
   "activationEvents": ["*"],
 
