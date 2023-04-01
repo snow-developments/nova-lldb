@@ -1,3 +1,1 @@
-## Version 0.1
-
-Initial release
+lldb.novaextension/CHANGELOG.md

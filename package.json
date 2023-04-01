@@ -18,6 +18,6 @@
   },
   "homepage": "https://github.com/snow-developments/nova-lldb#readme",
   "devDependencies": {
-    "@types/nova-editor"
+    "@types/nova-editor": "*"
   }
 }

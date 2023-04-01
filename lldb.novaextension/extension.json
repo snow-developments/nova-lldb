@@ -6,7 +6,7 @@
   "license": "MIT",
   "version": "0.1",
   "categories": ["tasks"],
-  "homepage": "https://github.com/snow-developments/nova-lldb#readme",
+  "repository": "https://github.com/snow-developments/nova-lldb",
   "bugs": "https://github.com/snow-developments/nova-lldb/issues",
 
   "main": "main.js",

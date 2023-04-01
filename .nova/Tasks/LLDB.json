@@ -1,0 +1,13 @@
+{
+  "extension" : {
+    "identifier" : "llc.snow.lldb",
+    "name" : "LLDB"
+  },
+  "extensionTemplate" : "lldb",
+  "extensionValues" : {
+    "args" : [
+
+    ],
+    "request" : "attach"
+  }
+}
