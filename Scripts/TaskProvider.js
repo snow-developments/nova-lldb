@@ -1,18 +1,6 @@
 const LLDB_ADAPTER = "lldb";
 
 class TaskProvider {
-  constructor() { }
-
-  provideTasks() {
-    let task = new Task("Debug");
-    // task.image = "";
-    const action = new TaskDebugAdapterAction('lldb');
-    action.command = "/usr/bin/lldb";
-    task.setAction(action);
-
-    return [];
-  }
-
   /**
    * @param context TaskActionResolveContext
    */
