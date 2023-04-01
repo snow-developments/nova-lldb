@@ -1,4 +1,7 @@
+# Artifacts
 build/
+lldb.novaextension/bin/
+lldb.novaextension/lldb/
 
 # NPM
 node_modules/

@@ -7,8 +7,9 @@
 Test the extension:
 
 1. `npm install`
-2. `open lldb.novaextension`
-3. Click Install
+2. `make`
+3. `open lldb.novaextension`
+4. Click Install
 
 ## Attribution
 
