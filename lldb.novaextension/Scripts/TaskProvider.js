@@ -1,6 +1,17 @@
 const LLDB_ADAPTER = "lldb";
 const PORT = 1234;
 
+const HOME = nova.environment["HOME"] || "~";
+
+// Application types
+// See https://en.wikipedia.org/wiki/Uniform_Type_Identifier
+const MAC_APP = "app";
+const UNIX_APP = "public.unix-executable";
+const PLAYDATE_APP = "com.panic.playdate.pdx";
+
+const PLAYDATE_SDK = `${HOME}/Developer/PlaydateSDK`;
+const PLAYDATE_SIMULATOR = `${PLAYDATE_SDK}/bin/Playdate Simulator.app`;
+
 // See https://github.com/vadimcn/codelldb#languages
 // See https://docs.nova.app/api-reference/debug-session
 /** @type {syntax: string, session: DebugSession}[] */
@@ -28,7 +39,7 @@ class TaskProvider {
   /**
    * @param context TaskActionResolveContext
    */
-  resolveTaskAction(context) {
+  async resolveTaskAction(context) {
     if (context.action !== Task.Run) return null;
     // TODO: Are there things to cleanup on behalf of LLDB?
     // else if (context.action.type === Task.Clean)
@@ -45,21 +56,55 @@ class TaskProvider {
     action.args = ["--port", PORT.toString()];
     // TODO: action.args = config.get("args", "array") || [];
     // TODO: Support https://docs.nova.app/api-reference/task-debug-adapter-action/#adapterstart
-    if (!config.get("launchPath", "string")) {
+    let launchPath = config.get("launchPath", "string");
+    if (!launchPath) {
       console.error("Invalid task configuration.");
       throw "Invalid LLDB task configuration: You must provide a Program to launch or attach to.";
     }
+    /** @type string[] */
+    const launchArgs = config.get("launchArgs", "array") || [];
+    const cwd = nova.path.normalize(config.get("cwd", "string") || nova.workspace.path);
+
+    // Launch the Playdate Simulator if the debugee is a Playdate app
+    const isPlaydateApp = await this.isPlaydateApp(launchPath);
+    if (isPlaydateApp) {
+      console.log(`launching playdate app: "${launchPath}"`);
+      const userLaunchPath = launchPath;
+      launchPath = PLAYDATE_SIMULATOR;
+      launchArgs.splice(0, 0, `"${userLaunchPath}"`);
+      // TODO: Support attaching to a running instance of the Playdate Simulator
+    }
+
     action.debugArgs = {
-      // See https://en.wikipedia.org/wiki/Uniform_Type_Identifier
-      program: config.get("launchPath", "string"),
-      args: config.get("launchArgs", "array") || [],
+      program: nova.path.normalize(nova.path.expanduser(launchPath)),
+      args: launchArgs,
+      cwd,
+      stopOnEntry: config.get("stopOnEntry", "boolean") || false,
     };
     action.debugRequest = config.get("request", "string") || "launch";
 
     return action;
   }
+
+  /**
+   * @param path {string}
+   * @returns {Promise<boolean>}
+   */
+  isPlaydateApp(path) {
+    return new Promise((resolve, reject) => {
+      // See https://en.wikipedia.org/wiki/Uniform_Type_Identifier#Looking_up_a_UTI
+      const mdls = new Process("/usr/bin/mdls", {
+        args: ["-name", "kMDItemContentType", path],
+        stdio: ["ignore", "pipe", "ignore"],
+      });
+      mdls.onStdout(line => {
+        if (line.includes(PLAYDATE_APP)) resolve(true);
+      });
+      mdls.onDidExit(status => (status !== 0 ? reject(status) : resolve(false)));
+      mdls.start();
+    });
+  }
 }
 exports.TaskProvider = TaskProvider;
 
 // https://docs.nova.app/extensions/debug-adapters
-class LldbDebugAdapter {}

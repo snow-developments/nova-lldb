@@ -2,6 +2,8 @@
 
 **LLDB** provides integration with the [LLVM debugger](https://lldb.llvm.org), including tasks to run and debug programs, attaching the debugger to an existing process, and stepping through code.
 
+Also includes specific support for debugging programs in the [Playdate Simulator](https://help.play.date/manual/simulator).
+
 <!--
 🎈 It can also be helpful to include a screenshot or GIF showing your extension in action:
 -->
