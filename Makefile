@@ -24,6 +24,8 @@ lldb.novaextension/bin/codelldb lldb.novaextension/bin/liblldb.dylib: codelldb/a
 # TODO: Use release and debug configurations
 	cp build/adapter/codelldb lldb.novaextension/bin/.
 	cp build/adapter/libcodelldb.dylib lldb.novaextension/bin/.
+# TODO: Fixup load paths to DLLs
+	# /Users/chancesnow/GitHub/nova-lldb/lldb.novaextension/lldb/lib/liblldb.dylib
 lldb.novaextension/lldb/lib/liblldb.dylib: build/lldb/archive
 	mkdir -p lldb.novaextension/lldb
 	cp -r build/lldb/archive/extension/lldb lldb.novaextension/.

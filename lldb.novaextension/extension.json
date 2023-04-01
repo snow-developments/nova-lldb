@@ -4,7 +4,7 @@
   "organization": "Snow Developments",
   "description": "LLVM debugger integration for Nova.",
   "license": "MIT",
-  "version": "0.1",
+  "version": "0.2",
   "categories": ["tasks"],
   "repository": "https://github.com/snow-developments/nova-lldb",
   "bugs": "https://github.com/snow-developments/nova-lldb/issues",
@@ -62,8 +62,18 @@
           "key": "launchPath",
           "title": "Program",
           "type": "path",
-          "filetype": ["app", "public.unix-executable"],
+          "filetype": ["app", "public.unix-executable", "com.panic.playdate.pdx"],
+          "required": true,
           "description": "The program to launch which contains debugging symbols readable by LLDB."
+        },
+        {
+          "key": "cwd",
+          "title": "Working Directory",
+          "type": "path",
+          "placeholder": "Automatic",
+          "allowFiles": false,
+          "allowFolders": true,
+          "description": "Working directory assigned to the launched program. If 'Automatic', defaults to the root directory of the current workspace."
         },
         {
           "key": "stopOnEntry",
