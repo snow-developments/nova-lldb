@@ -14,9 +14,16 @@
   "activationEvents": [
     "onWorkspaceContains:extension.json"
   ],
+  "debugAdapters": {
+    "lldb": {
+      "name": "LLDB"
+    }
+  },
+  
   "taskTemplates": {
     "lldb": {
       "name": "LLDB",
+      "description": "Debug native code using LLDB.",
       "tasks": {
         "run": {
           "resolve": "lldb"
@@ -42,17 +49,17 @@
           "description": "The program to launch which contains debugging symbols readable by LLDB."
         },
         {
-          "key": "launchArgs",
-          "title": "Launch Arguments",
-          "description": "Additional command-line arguments to pass to the program when launching.",
-          "type": "stringArray"
-        },
-        {
           "key": "stopOnEntry",
           "title": "Stop on Entry",
           "description": "Whether to stop automatically after launch.",
           "type": "boolean",
           "default": false
+        },
+        {
+          "key": "launchArgs",
+          "title": "Launch Arguments",
+          "description": "Additional command-line arguments to pass to the program when launching.",
+          "type": "stringArray"
         },
         {
           "type": "section",
@@ -65,11 +72,6 @@
           "type": "stringArray"
         }
       ]
-    }
-  },
-  "debugAdapters": {
-    "lldb": {
-      "name": "LLDB"
     }
   }
 }
