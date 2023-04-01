@@ -8,12 +8,10 @@
   "categories": ["tasks"],
   "homepage": "https://github.com/snow-developments/nova-lldb#readme",
   "bugs": "https://github.com/snow-developments/nova-lldb/issues",
-  
+
   "main": "main.js",
-  
-  "activationEvents": [
-    "onWorkspaceContains:extension.json"
-  ],
+
+  "activationEvents": ["*"],
 
   "breakpoints": [
     { "syntax": "ada" },
@@ -32,7 +30,7 @@
       "name": "LLDB"
     }
   },
-  
+
   "taskTemplates": {
     "lldb": {
       "name": "LLDB",
