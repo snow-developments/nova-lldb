@@ -1,6 +1,8 @@
 SOURCES := $(shell find lldb.novaextension/Scripts -name '*.js')
 
 ARCH := $(shell uname -m)
+MAKEFILE := $(abspath $(lastword $(MAKEFILE_LIST)))
+MAKEFILE_PATH := $(dir $(MAKEFILE))
 CODELLDB_VERSION := v1.9.0
 LLDB_PACKAGE_ARCHIVE := "https://github.com/vadimcn/codelldb/releases/download/$(CODELLDB_VERSION)/codelldb-$(ARCH)-darwin.vsix"
 LLDB_PACKAGE := build/lldb/archive/extension/lldb
@@ -24,8 +26,9 @@ lldb.novaextension/bin/codelldb lldb.novaextension/bin/liblldb.dylib: codelldb/a
 # TODO: Use release and debug configurations
 	cp build/adapter/codelldb lldb.novaextension/bin/.
 	cp build/adapter/libcodelldb.dylib lldb.novaextension/bin/.
-# TODO: Fixup load paths to DLLs
-	# /Users/chancesnow/GitHub/nova-lldb/lldb.novaextension/lldb/lib/liblldb.dylib
+# /Users/chancesnow/GitHub/nova-lldb/lldb.novaextension/lldb/lib/liblldb.dylib
+	@echo Fixing up liblldb dylib path...
+	install_name_tool -change "$(MAKEFILE_PATH)lldb.novaextension/lldb/lib/liblldb.dylib" @executable_path/../lldb/lib/libwgpu.dylib lldb.novaextension/bin/codelldb
 lldb.novaextension/lldb/lib/liblldb.dylib: build/lldb/archive
 	mkdir -p lldb.novaextension/lldb
 	cp -r build/lldb/archive/extension/lldb lldb.novaextension/.
