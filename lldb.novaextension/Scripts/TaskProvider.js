@@ -57,10 +57,7 @@ class TaskProvider {
     // TODO: action.args = config.get("args", "array") || [];
     // TODO: Support https://docs.nova.app/api-reference/task-debug-adapter-action/#adapterstart
     let launchPath = config.get("launchPath", "string");
-    if (!launchPath) {
-      console.error("Invalid task configuration.");
-      throw "Invalid LLDB task configuration: You must provide a Program to launch or attach to.";
-    }
+    if (!launchPath) throw "Invalid LLDB task configuration: You must provide a Program to launch or attach to.";
     /** @type string[] */
     const launchArgs = config.get("launchArgs", "array") || [];
     const cwd = nova.path.normalize(config.get("cwd", "string") || nova.workspace.path);
